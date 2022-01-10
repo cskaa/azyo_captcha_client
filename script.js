@@ -6,8 +6,8 @@ class AzyoCaptcha{
     $.ajax({
       type: "POST",
       enctype: 'JSON',
-      url: 'http://192.168.0.105:5003/secret_code_check',
-      headers: { 'Access-Control-Allow-Origin': 'http://192.168.0.106:5003/log' },
+      url: 'http://103.93.17.125:5003/secret_code_check',
+      headers: { 'Access-Control-Allow-Origin': 'http://103.93.17.125:5003/secret_code_check' },
       data: JSON.stringify({'secret': id, 'domain': window.location.hostname}),
       processData: false,
       'contentType': 'application/json',
@@ -543,8 +543,8 @@ class AzyoCaptcha{
     $.ajax({
       type: "POST",
       enctype: 'JSON',
-      url: "http://192.168.0.105:5003//success_count",
-      headers: { 'Access-Control-Allow-Origin': 'http://192.168.0.106:5003/log' },
+      url: "http://103.93.17.125:5003/success_count",
+      headers: { 'Access-Control-Allow-Origin': 'http://103.93.17.125:5003/success_count' },
       data: JSON.stringify({'secret': id, 'domain': window.location.hostname}),
       processData: false,
       'contentType': 'application/json',
