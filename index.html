@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id = "clicker">clicker</button>
+    <div id = "azyo_holder"></div>
+
+    <script  type="text/javascript" crossorigin="anonymous" src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/script_v1.3.js" ></script>
+    <script>
+      onfinish = (res) => {if (res == "success") {console.log("Customer's Code")} else {console.log("Handle err here")}}
+      x = new AzyoCaptcha("0000111100001111", "clicker", "azyo_holder", onfinish)
+    </script>
+  </body>
+</html>
