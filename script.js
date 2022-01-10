@@ -22,7 +22,7 @@ class AzyoCaptcha{
           this.set_class_vars();
           
           this.hands = new Hands({locateFile: (file) => {
-            return `https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/models/hands/${file}`;
+            return `/models/hands/${file}`;
           }});
           this.hands.setOptions({
             maxNumHands: 2,
@@ -39,7 +39,7 @@ class AzyoCaptcha{
           });
       
           this.faceMesh = new FaceMesh({locateFile: (file) => {
-            return `https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/models/face_mesh/${file}`;
+            return `/models/face_mesh/${file}`;
           }});
       
           this.faceMesh.setOptions({
@@ -79,12 +79,12 @@ class AzyoCaptcha{
 
   init_imports(){
     $('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">');
-    $('head').append('<link rel= "stylesheet" href="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/styles.css">');
-    $('head').append('<script defer src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/ext/blockui.min.js" ></script>');
-    $('head').append('<script src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/utils/camera_utils.js"></script>');
-    $('head').append('<script src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/utils/drawing_utils.js"></script>');
-    $('head').append('<script src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/models/face_mesh/face_mesh.js"></script>');
-    $('head').append('<script src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/models/hands/hands.js"></script>');
+    $('head').append('<link rel= "stylesheet" href="styles.css">');
+    $('head').append('<script defer src="ext/blockui.min.js" ></script>');
+    $('head').append('<script src="utils/camera_utils.js"></script>');
+    $('head').append('<script src="utils/drawing_utils.js"></script>');
+    $('head').append('<script src="models/face_mesh/face_mesh.js"></script>');
+    $('head').append('<script src="models/hands/hands.js"></script>');
     // $('head').append('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>');
     $('head').append('<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>');
     $('head').append('<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>');
@@ -122,7 +122,7 @@ class AzyoCaptcha{
                   <div class="col-12">
                     <div class="card-body">
                       <h4 class="font-weight-bold text-center">
-                      <img src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/images/azyo%20shield%20logo.png" width = "27px" style = "margin-bottom: 5px;">
+                      <img src="images/azyo shield logo.png" width = "27px" style = "margin-bottom: 5px;">
                       AZYO SHIELD
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
                         <span aria-hidden="true">&times;</span>
@@ -142,10 +142,10 @@ class AzyoCaptcha{
                             <p id = "mesh_err" style="text-align: center;position: relative;z-index: 997; margin-top: 35px; font-weight: 900px;font-size: 18px; color: ghostwhite;background-color: rgba(92, 88, 88, 0.61); border-radius: 5px; padding: 2px;display: none;"></p>
                           </div>
                           <video id="video" width="680px" height="425px" autoplay muted style="outline: 2px solid black; outline-offset: 6px;" ></video>
-                          <img id = "normal" src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/images/Hi_inst.png" height="100" width="100" style="display: none;position:absolute;top: 0;right: 0;z-index:1000;outline: 2px solid white;">
-                          <img id = "dots" src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/images/dots.gif" height="100" width="100" style="display: none;position:absolute;top:0;right:0;z-index:1000;outline: 2px solid white;">
-                          <img id = "lips" src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/images/lips.gif" height="100" width="100" style="display: none;position:absolute;top:0;right:0;z-index:1000;outline: 2px solid white;">
-                          <img id = "fingers" src="https://cdn.jsdelivr.net/gh/cskaa/azyo_captcha_client/images/fingers.gif" height="100" width="100" style="display: none;position:absolute;top:0;right:0;z-index:1000;outline: 2px solid white;">
+                          <img id = "normal" src="images/Hi_inst.png" height="100" width="100" style="display: none;position:absolute;top: 0;right: 0;z-index:1000;outline: 2px solid white;">
+                          <img id = "dots" src="images/dots.gif" height="100" width="100" style="display: none;position:absolute;top:0;right:0;z-index:1000;outline: 2px solid white;">
+                          <img id = "lips" src="images/lips.gif" height="100" width="100" style="display: none;position:absolute;top:0;right:0;z-index:1000;outline: 2px solid white;">
+                          <img id = "fingers" src="images/fingers.gif" height="100" width="100" style="display: none;position:absolute;top:0;right:0;z-index:1000;outline: 2px solid white;">
                         </div>
                       </div>
                       <br>
