@@ -262,6 +262,8 @@ class AzyoCaptcha{
     this.blinkCount = 0
     this.longBlinkCounter = 0
 
+    this.lastBlinkFlag = false
+
   }
 
   taskCompleteFlag(tasknum){
@@ -595,25 +597,43 @@ class AzyoCaptcha{
       let blinked = leftEAR <= this.EAR_THRESHOLD && rightEAR <= this.EAR_THRESHOLD;
       console.log(blinked, "leftEAR", leftEAR, "rightEAR", rightEAR)
       
-      let blink_event = {
-        left: leftEAR <= this.EAR_THRESHOLD,
-        right: rightEAR <= this.EAR_THRESHOLD,
-        wink: leftEAR <= this.EAR_THRESHOLD || rightEAR <= this.EAR_THRESHOLD,
-        blink: blinked,
-        longBlink: this.isVoluntaryBlink(blinked)
-      };
+      // let blink_event = {
+      //   left: leftEAR <= this.EAR_THRESHOLD,
+      //   right: rightEAR <= this.EAR_THRESHOLD,
+      //   wink: leftEAR <= this.EAR_THRESHOLD || rightEAR <= this.EAR_THRESHOLD,
+      //   blink: blinked,
+      //   longBlink: this.isVoluntaryBlink(blinked)
+      // };
 
-      if (blink_event.longBlink) {
-        this.longBlinkCounter++;
-      }
-
-      // if (blinked){
+      // if (blink_event.longBlink) {
       //   this.longBlinkCounter++;
       // }
 
-      if (this.longBlinkCounter > 3) {
-        this.taskCompleteFlag(tasknum)
-        this.longBlinkCounter = 0;
+      // // if (blinked){
+      // //   this.longBlinkCounter++;
+      // // }
+
+      // if (this.longBlinkCounter > 3) {
+      //   this.taskCompleteFlag(tasknum)
+      //   this.longBlinkCounter = 0;
+      // }
+
+      if (this.lastBlinkFlag == blinked){
+        // it has not changed from previous frame
+        // do nothing in that case
+        // console.log("Blinked but same blink status")
+      } else {
+        // console.log("Blinked with change", blinked)
+        this.lastBlinkFlag = blinked;
+        
+        if (blinked){
+          this.longBlinkCounter++;
+        }
+        
+        if (this.longBlinkCounter > 10) {
+          this.taskCompleteFlag(tasknum)
+          this.longBlinkCounter = 0;
+        }
       }
     }
 
